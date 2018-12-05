@@ -13,7 +13,7 @@
         <!--Metro Explorer-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Metro_Explorer" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="MenuViewController" customModule="Metro_Explorer" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -25,37 +25,34 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ygx-3R-tVI">
-                                <rect key="frame" x="127" y="298" width="121" height="36"/>
+                                <rect key="frame" x="120" y="298" width="135" height="36"/>
                                 <color key="backgroundColor" red="0.34664399779999999" green="0.6417417487" blue="0.90414507769999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <state key="normal" title="Nearest">
+                                <state key="normal" title="Nearest Station">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <segue destination="yeX-qX-iMn" kind="show" id="uBQ-9c-OXL"/>
+                                    <action selector="NearestButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="RcR-rG-hW9"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d2v-Gb-sF7">
-                                <rect key="frame" x="127" y="379" width="121" height="36"/>
+                                <rect key="frame" x="120" y="379" width="135" height="36"/>
                                 <color key="backgroundColor" red="0.34664399779999999" green="0.6417417487" blue="0.90414507769999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="Select Station">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <segue destination="KxF-Qf-0hh" kind="show" id="zP3-N3-SYP"/>
+                                    <action selector="StationButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="kzR-Jh-VX6"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NIK-jH-fHg">
-                                <rect key="frame" x="127" y="460" width="121" height="36"/>
+                                <rect key="frame" x="120" y="460" width="135" height="36"/>
                                 <color key="backgroundColor" red="0.34664399779999999" green="0.6417417487" blue="0.90414507769999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="Favorite">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
-                                <connections>
-                                    <segue destination="rXu-0S-FOP" kind="show" id="H4t-zH-O3W"/>
-                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.69860356504361221" green="1" blue="0.82422549767054187" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -76,10 +73,43 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" title="Metro Explorer" id="j8i-Op-JGK"/>
+                    <connections>
+                        <segue destination="vNa-s5-jWw" kind="show" identifier="stationsSegue" id="Uln-lk-oh8"/>
+                        <segue destination="yeX-qX-iMn" kind="show" identifier="nearestSegue" id="sl9-ty-xDW"/>
+                        <segue destination="rXu-0S-FOP" kind="show" identifier="favoriteSegue" id="sPi-If-USn"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1087" y="-672"/>
+        </scene>
+        <!--Stations Table View Controller-->
+        <scene sceneID="ZIw-Q2-HUh">
+            <objects>
+                <tableViewController id="vNa-s5-jWw" customClass="StationsTableViewController" customModule="Metro_Explorer" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="cHe-aH-8jg">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="stationCell" id="C05-TS-Cab">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="C05-TS-Cab" id="gW5-Hi-NSG">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="vNa-s5-jWw" id="GDE-nL-dbX"/>
+                            <outlet property="delegate" destination="vNa-s5-jWw" id="U2c-ae-8Fx"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0eT-BN-eGR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1909" y="-660"/>
         </scene>
         <!--Table View Controller-->
         <scene sceneID="TH2-Nn-ecp">
@@ -107,40 +137,12 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="94G-wh-Bee" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1086" y="164"/>
+            <point key="canvasLocation" x="1086" y="112"/>
         </scene>
-        <!--Table View Controller-->
-        <scene sceneID="Cew-hp-vdf">
-            <objects>
-                <tableViewController id="KxF-Qf-0hh" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="YqR-eQ-Tqd">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="chooseCell" id="sl7-Vd-6Qt">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="sl7-Vd-6Qt" id="tF9-2e-UX5">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="KxF-Qf-0hh" id="KC8-Hf-WAd"/>
-                            <outlet property="delegate" destination="KxF-Qf-0hh" id="e4R-uH-qWJ"/>
-                        </connections>
-                    </tableView>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="P1E-o8-De6" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2137" y="-648"/>
-        </scene>
-        <!--Table View Controller-->
+        <!--Landmarks Table View Controller-->
         <scene sceneID="FA4-g6-XCg">
             <objects>
-                <tableViewController id="yeX-qX-iMn" sceneMemberID="viewController">
+                <tableViewController id="yeX-qX-iMn" customClass="LandmarksTableViewController" customModule="Metro_Explorer" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Ffc-s3-sjK">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

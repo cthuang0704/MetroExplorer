@@ -7,17 +7,31 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7463534A21B5768D0094D8E7 /* Station.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7463534921B5768D0094D8E7 /* Station.swift */; };
+		7463534C21B591110094D8E7 /* StationsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7463534B21B591110094D8E7 /* StationsTableViewController.swift */; };
+		7463535221B5DA6A0094D8E7 /* LandmarksTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7463535121B5DA6A0094D8E7 /* LandmarksTableViewController.swift */; };
+		7463535421B5DCC30094D8E7 /* MetroStationResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7463535321B5DCC30094D8E7 /* MetroStationResponse.swift */; };
+		7463535621B5DD390094D8E7 /* MetroStation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7463535521B5DD390094D8E7 /* MetroStation.swift */; };
+		7463535821B5DD8B0094D8E7 /* FetchMetroStationsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7463535721B5DD8B0094D8E7 /* FetchMetroStationsManager.swift */; };
+		7463535A21B605D10094D8E7 /* LocationDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7463535921B605D10094D8E7 /* LocationDetector.swift */; };
 		7481FEBC21A1F8F900D9804E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7481FEBB21A1F8F900D9804E /* AppDelegate.swift */; };
-		7481FEBE21A1F8F900D9804E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7481FEBD21A1F8F900D9804E /* ViewController.swift */; };
+		7481FEBE21A1F8F900D9804E /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7481FEBD21A1F8F900D9804E /* MenuViewController.swift */; };
 		7481FEC121A1F8F900D9804E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7481FEBF21A1F8F900D9804E /* Main.storyboard */; };
 		7481FEC321A1F8FE00D9804E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7481FEC221A1F8FE00D9804E /* Assets.xcassets */; };
 		7481FEC621A1F8FE00D9804E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7481FEC421A1F8FE00D9804E /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7463534921B5768D0094D8E7 /* Station.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Station.swift; sourceTree = "<group>"; };
+		7463534B21B591110094D8E7 /* StationsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationsTableViewController.swift; sourceTree = "<group>"; };
+		7463535121B5DA6A0094D8E7 /* LandmarksTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandmarksTableViewController.swift; sourceTree = "<group>"; };
+		7463535321B5DCC30094D8E7 /* MetroStationResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetroStationResponse.swift; sourceTree = "<group>"; };
+		7463535521B5DD390094D8E7 /* MetroStation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetroStation.swift; sourceTree = "<group>"; };
+		7463535721B5DD8B0094D8E7 /* FetchMetroStationsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchMetroStationsManager.swift; sourceTree = "<group>"; };
+		7463535921B605D10094D8E7 /* LocationDetector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationDetector.swift; sourceTree = "<group>"; };
 		7481FEB821A1F8F800D9804E /* Metro Explorer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Metro Explorer.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7481FEBB21A1F8F900D9804E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		7481FEBD21A1F8F900D9804E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		7481FEBD21A1F8F900D9804E /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		7481FEC021A1F8F900D9804E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		7481FEC221A1F8FE00D9804E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7481FEC521A1F8FE00D9804E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -35,6 +49,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7463534721B549640094D8E7 /* view controllers */ = {
+			isa = PBXGroup;
+			children = (
+				7481FEBD21A1F8F900D9804E /* MenuViewController.swift */,
+				7463534B21B591110094D8E7 /* StationsTableViewController.swift */,
+				7463535121B5DA6A0094D8E7 /* LandmarksTableViewController.swift */,
+			);
+			path = "view controllers";
+			sourceTree = "<group>";
+		};
+		7463534821B5766D0094D8E7 /* models */ = {
+			isa = PBXGroup;
+			children = (
+				7463534921B5768D0094D8E7 /* Station.swift */,
+				7463535321B5DCC30094D8E7 /* MetroStationResponse.swift */,
+				7463535521B5DD390094D8E7 /* MetroStation.swift */,
+			);
+			path = models;
+			sourceTree = "<group>";
+		};
 		7481FEAF21A1F8F800D9804E = {
 			isa = PBXGroup;
 			children = (
@@ -54,8 +88,11 @@
 		7481FEBA21A1F8F800D9804E /* Metro Explorer */ = {
 			isa = PBXGroup;
 			children = (
+				7463535721B5DD8B0094D8E7 /* FetchMetroStationsManager.swift */,
+				7463535921B605D10094D8E7 /* LocationDetector.swift */,
+				7463534821B5766D0094D8E7 /* models */,
+				7463534721B549640094D8E7 /* view controllers */,
 				7481FEBB21A1F8F900D9804E /* AppDelegate.swift */,
-				7481FEBD21A1F8F900D9804E /* ViewController.swift */,
 				7481FEBF21A1F8F900D9804E /* Main.storyboard */,
 				7481FEC221A1F8FE00D9804E /* Assets.xcassets */,
 				7481FEC421A1F8FE00D9804E /* LaunchScreen.storyboard */,
@@ -135,7 +172,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7481FEBE21A1F8F900D9804E /* ViewController.swift in Sources */,
+				7463534C21B591110094D8E7 /* StationsTableViewController.swift in Sources */,
+				7463535621B5DD390094D8E7 /* MetroStation.swift in Sources */,
+				7463535221B5DA6A0094D8E7 /* LandmarksTableViewController.swift in Sources */,
+				7463535821B5DD8B0094D8E7 /* FetchMetroStationsManager.swift in Sources */,
+				7463535A21B605D10094D8E7 /* LocationDetector.swift in Sources */,
+				7481FEBE21A1F8F900D9804E /* MenuViewController.swift in Sources */,
+				7463535421B5DCC30094D8E7 /* MetroStationResponse.swift in Sources */,
+				7463534A21B5768D0094D8E7 /* Station.swift in Sources */,
 				7481FEBC21A1F8F900D9804E /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
