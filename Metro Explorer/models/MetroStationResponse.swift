@@ -24,8 +24,8 @@ struct Stations: Codable {
 //    let LineCode2: LineCode2
 //    let LineCode3: LineCode3
 //    let LineCode4: LineCode4
-//    let Lat: Double
-//    let Lon: Double
+    let Lat: Double
+    let Lon: Double
 //    let Address: Address
     
 }

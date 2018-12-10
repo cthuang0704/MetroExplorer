@@ -106,10 +106,13 @@
                             <outlet property="delegate" destination="vNa-s5-jWw" id="U2c-ae-8Fx"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <segue destination="yeX-qX-iMn" kind="show" identifier="landmarkSegue" id="eBh-Vo-EGC"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0eT-BN-eGR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1909" y="-660"/>
+            <point key="canvasLocation" x="2137" y="-637"/>
         </scene>
         <!--Table View Controller-->
         <scene sceneID="TH2-Nn-ecp">
@@ -148,13 +151,38 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="stationCell" id="IMh-bZ-912">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="landmarkCell" rowHeight="75" id="IMh-bZ-912" customClass="LandmarkTableViewCell" customModule="Metro_Explorer" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="75"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="IMh-bZ-912" id="Bmt-3o-t27">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="74.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="g7R-hC-rYv">
+                                            <rect key="frame" x="272" y="-27" width="103" height="123"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="LandmarkName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UTM-aS-uIY">
+                                            <rect key="frame" x="28" y="11" width="72" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="LandmarkAddress" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OjK-4i-Pab">
+                                            <rect key="frame" x="28" y="40" width="66" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="LandmarkAddressLabel" destination="OjK-4i-Pab" id="by0-oN-tTG"/>
+                                    <outlet property="LandmarkImage" destination="g7R-hC-rYv" id="cMK-wW-IMo"/>
+                                    <outlet property="LandmarkNameLabel" destination="UTM-aS-uIY" id="93m-2y-QSp"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -166,7 +194,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nbG-gg-zhv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2138" y="-1383"/>
+            <point key="canvasLocation" x="2136.8000000000002" y="-1383.0584707646178"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="NKp-na-zac">
@@ -187,4 +215,7 @@
             <point key="canvasLocation" x="344.80000000000001" y="-671.51424287856082"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="eBh-Vo-EGC"/>
+    </inferredMetricsTieBreakers>
 </document>

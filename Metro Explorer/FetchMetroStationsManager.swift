@@ -10,10 +10,17 @@ import Foundation
 
 protocol FetchStationsDelegate {
     func stationsFound(_ metroStations: [MetroStation])
-    func stationsNotFound()
+    func stationsNotFound(reason: FetchMetroStationsManager.FailureReason)
 }
 
 class FetchMetroStationsManager {
+    
+    enum FailureReason: String {
+        case noResponse = "No response received" //allow the user to try again
+        case non200Response = "Bad response" //give up
+        case noData = "No data recieved" //give up
+        case badData = "Bad data" //give up
+    }
     
     var delegate: FetchStationsDelegate?
     
@@ -22,7 +29,6 @@ class FetchMetroStationsManager {
         
         urlComponents.queryItems = [
             URLQueryItem(name: "api_key", value: "8f4b3622c3744fa68e062e2754642a51"),
-           
         ]
         
         let url = urlComponents.url!
@@ -32,27 +38,24 @@ class FetchMetroStationsManager {
         
         let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
             //PUT CODE HERE TO RUN UPON COMPLETION
-            print("request complete")
             
-            guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
-                print("response is nil or not 200")
-                
-                self.delegate?.stationsNotFound()
-                
+            guard let response = response as? HTTPURLResponse else {
+                self.delegate?.stationsNotFound(reason: .noResponse)
+                return
+            }
+            
+            guard response.statusCode == 200 else {
+                self.delegate?.stationsNotFound(reason: .non200Response)
                 return
             }
             
             //HERE - response is NOT nil and IS 200
-            
             guard let data = data else {
-                print("data is nil")
-                
-                self.delegate?.stationsNotFound()
+                self.delegate?.stationsNotFound(reason: .noData)
                 return
             }
             
             //HERE - data is NOT nil
-            
             let decoder = JSONDecoder()
             
             do {
@@ -74,13 +77,10 @@ class FetchMetroStationsManager {
 //                        iconUrl = "\(iconPrefix)44\(iconSuffix)"
 //                    }
                     
-                    let station = MetroStation(name: station.Name)
+                    let station = MetroStation(name: station.Name, latitude: station.Lat, longitude: station.Lon)
                     
                     stations.append(station)
                 }
-                
-                //now what do we do with the gyms????
-                print(stations)
                 
                 self.delegate?.stationsFound(stations)
                 
@@ -89,8 +89,7 @@ class FetchMetroStationsManager {
                 //if we get here, need to set a breakpoint and inspect the error to see where there is a mismatch between JSON and our Codable model structs
                 print("codable failed - bad data format")
                 print(error.localizedDescription)
-                
-                self.delegate?.stationsNotFound()
+                self.delegate?.stationsNotFound(reason: .badData)
             }
         }
         

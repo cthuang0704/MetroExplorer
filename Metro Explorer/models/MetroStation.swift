@@ -9,6 +9,7 @@
 import Foundation
 struct MetroStation {
     let name: String
-
+    let latitude: Double
+    let longitude: Double
 }
 

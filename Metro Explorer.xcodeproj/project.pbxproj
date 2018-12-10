@@ -7,7 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7463534A21B5768D0094D8E7 /* Station.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7463534921B5768D0094D8E7 /* Station.swift */; };
+		64E7CB15669590BE92C46CEC /* Pods_Metro_Explorer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8031C89E27F0D8F63DBB4DB2 /* Pods_Metro_Explorer.framework */; };
+		743956B421BDD04F0029A436 /* LandmarkTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743956B321BDD04F0029A436 /* LandmarkTableViewCell.swift */; };
+		743956B621BDD1570029A436 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743956B521BDD1570029A436 /* Extensions.swift */; };
 		7463534C21B591110094D8E7 /* StationsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7463534B21B591110094D8E7 /* StationsTableViewController.swift */; };
 		7463535221B5DA6A0094D8E7 /* LandmarksTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7463535121B5DA6A0094D8E7 /* LandmarksTableViewController.swift */; };
 		7463535421B5DCC30094D8E7 /* MetroStationResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7463535321B5DCC30094D8E7 /* MetroStationResponse.swift */; };
@@ -19,10 +21,15 @@
 		7481FEC121A1F8F900D9804E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7481FEBF21A1F8F900D9804E /* Main.storyboard */; };
 		7481FEC321A1F8FE00D9804E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7481FEC221A1F8FE00D9804E /* Assets.xcassets */; };
 		7481FEC621A1F8FE00D9804E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7481FEC421A1F8FE00D9804E /* LaunchScreen.storyboard */; };
+		74C671A021BDB51A00EE1204 /* Landmark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74C6719F21BDB51A00EE1204 /* Landmark.swift */; };
+		74C671A221BDB56A00EE1204 /* LandmarkResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74C671A121BDB56A00EE1204 /* LandmarkResponse.swift */; };
+		74C671A421BDBC4A00EE1204 /* FetchLandmarksManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74C671A321BDBC4A00EE1204 /* FetchLandmarksManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		7463534921B5768D0094D8E7 /* Station.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Station.swift; sourceTree = "<group>"; };
+		20DEEC8ADD17C7B46101963D /* Pods-Metro Explorer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Metro Explorer.release.xcconfig"; path = "Pods/Target Support Files/Pods-Metro Explorer/Pods-Metro Explorer.release.xcconfig"; sourceTree = "<group>"; };
+		743956B321BDD04F0029A436 /* LandmarkTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandmarkTableViewCell.swift; sourceTree = "<group>"; };
+		743956B521BDD1570029A436 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		7463534B21B591110094D8E7 /* StationsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationsTableViewController.swift; sourceTree = "<group>"; };
 		7463535121B5DA6A0094D8E7 /* LandmarksTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandmarksTableViewController.swift; sourceTree = "<group>"; };
 		7463535321B5DCC30094D8E7 /* MetroStationResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetroStationResponse.swift; sourceTree = "<group>"; };
@@ -36,6 +43,11 @@
 		7481FEC221A1F8FE00D9804E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7481FEC521A1F8FE00D9804E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7481FEC721A1F8FE00D9804E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		74C6719F21BDB51A00EE1204 /* Landmark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Landmark.swift; sourceTree = "<group>"; };
+		74C671A121BDB56A00EE1204 /* LandmarkResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandmarkResponse.swift; sourceTree = "<group>"; };
+		74C671A321BDBC4A00EE1204 /* FetchLandmarksManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchLandmarksManager.swift; sourceTree = "<group>"; };
+		8031C89E27F0D8F63DBB4DB2 /* Pods_Metro_Explorer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Metro_Explorer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F81412E0A6948688D37582C4 /* Pods-Metro Explorer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Metro Explorer.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Metro Explorer/Pods-Metro Explorer.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,18 +55,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				64E7CB15669590BE92C46CEC /* Pods_Metro_Explorer.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		58B7E37AB93707FE64A53127 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8031C89E27F0D8F63DBB4DB2 /* Pods_Metro_Explorer.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		7463534721B549640094D8E7 /* view controllers */ = {
 			isa = PBXGroup;
 			children = (
 				7481FEBD21A1F8F900D9804E /* MenuViewController.swift */,
 				7463534B21B591110094D8E7 /* StationsTableViewController.swift */,
 				7463535121B5DA6A0094D8E7 /* LandmarksTableViewController.swift */,
+				743956B321BDD04F0029A436 /* LandmarkTableViewCell.swift */,
 			);
 			path = "view controllers";
 			sourceTree = "<group>";
@@ -62,9 +84,10 @@
 		7463534821B5766D0094D8E7 /* models */ = {
 			isa = PBXGroup;
 			children = (
-				7463534921B5768D0094D8E7 /* Station.swift */,
 				7463535321B5DCC30094D8E7 /* MetroStationResponse.swift */,
 				7463535521B5DD390094D8E7 /* MetroStation.swift */,
+				74C6719F21BDB51A00EE1204 /* Landmark.swift */,
+				74C671A121BDB56A00EE1204 /* LandmarkResponse.swift */,
 			);
 			path = models;
 			sourceTree = "<group>";
@@ -72,8 +95,11 @@
 		7481FEAF21A1F8F800D9804E = {
 			isa = PBXGroup;
 			children = (
+				743956B521BDD1570029A436 /* Extensions.swift */,
 				7481FEBA21A1F8F800D9804E /* Metro Explorer */,
 				7481FEB921A1F8F800D9804E /* Products */,
+				F7E22C3D4D822924B8E34436 /* Pods */,
+				58B7E37AB93707FE64A53127 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -89,6 +115,7 @@
 			isa = PBXGroup;
 			children = (
 				7463535721B5DD8B0094D8E7 /* FetchMetroStationsManager.swift */,
+				74C671A321BDBC4A00EE1204 /* FetchLandmarksManager.swift */,
 				7463535921B605D10094D8E7 /* LocationDetector.swift */,
 				7463534821B5766D0094D8E7 /* models */,
 				7463534721B549640094D8E7 /* view controllers */,
@@ -101,6 +128,15 @@
 			path = "Metro Explorer";
 			sourceTree = "<group>";
 		};
+		F7E22C3D4D822924B8E34436 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				F81412E0A6948688D37582C4 /* Pods-Metro Explorer.debug.xcconfig */,
+				20DEEC8ADD17C7B46101963D /* Pods-Metro Explorer.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -108,9 +144,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7481FECA21A1F8FE00D9804E /* Build configuration list for PBXNativeTarget "Metro Explorer" */;
 			buildPhases = (
+				5D4656FACCF102E9F8314AAA /* [CP] Check Pods Manifest.lock */,
 				7481FEB421A1F8F800D9804E /* Sources */,
 				7481FEB521A1F8F800D9804E /* Frameworks */,
 				7481FEB621A1F8F800D9804E /* Resources */,
+				8A2B0ED9559A389E9D3D313B /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -167,11 +205,59 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		5D4656FACCF102E9F8314AAA /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Metro Explorer-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8A2B0ED9559A389E9D3D313B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Metro Explorer/Pods-Metro Explorer-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Metro Explorer/Pods-Metro Explorer-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		7481FEB421A1F8F800D9804E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				74C671A421BDBC4A00EE1204 /* FetchLandmarksManager.swift in Sources */,
 				7463534C21B591110094D8E7 /* StationsTableViewController.swift in Sources */,
 				7463535621B5DD390094D8E7 /* MetroStation.swift in Sources */,
 				7463535221B5DA6A0094D8E7 /* LandmarksTableViewController.swift in Sources */,
@@ -179,8 +265,11 @@
 				7463535A21B605D10094D8E7 /* LocationDetector.swift in Sources */,
 				7481FEBE21A1F8F900D9804E /* MenuViewController.swift in Sources */,
 				7463535421B5DCC30094D8E7 /* MetroStationResponse.swift in Sources */,
-				7463534A21B5768D0094D8E7 /* Station.swift in Sources */,
 				7481FEBC21A1F8F900D9804E /* AppDelegate.swift in Sources */,
+				743956B421BDD04F0029A436 /* LandmarkTableViewCell.swift in Sources */,
+				74C671A021BDB51A00EE1204 /* Landmark.swift in Sources */,
+				74C671A221BDB56A00EE1204 /* LandmarkResponse.swift in Sources */,
+				743956B621BDD1570029A436 /* Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -324,6 +413,7 @@
 		};
 		7481FECB21A1F8FE00D9804E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F81412E0A6948688D37582C4 /* Pods-Metro Explorer.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -342,6 +432,7 @@
 		};
 		7481FECC21A1F8FE00D9804E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 20DEEC8ADD17C7B46101963D /* Pods-Metro Explorer.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

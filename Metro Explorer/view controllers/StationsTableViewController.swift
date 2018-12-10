@@ -7,9 +7,11 @@
 //
 
 import UIKit
+import MBProgressHUD
 
 class StationsTableViewController: UITableViewController {
-
+    
+//    let locationDetector = LocationDetector()
     var stations = [MetroStation]() {
         didSet {
             tableView.reloadData()
@@ -18,12 +20,18 @@ class StationsTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         let fetchMetroStationsManager = FetchMetroStationsManager()
         fetchMetroStationsManager.delegate = self
-
-//        MBProgressHUD.showAdded(to: self.view, animated: true)
+         MBProgressHUD.showAdded(to: self.view, animated: true)
+//        locationDetector.delegate = self
         fetchMetroStationsManager.fetchStations()
     
+    }
+    
+    private func fetchStations() {
+        //MBProgressHUD.showAdded(to: self.view, animated: true)
+//        locationDetector.findLocation()
     }
 
     // MARK: - Table view data source
@@ -40,28 +48,54 @@ class StationsTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "stationCell", for: indexPath)
-    
         cell.textLabel?.text = stations[indexPath.row].name
-        
         return cell
     }
-
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "landmarkSegue", sender: indexPath.row)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let row  = sender as! Int
+        
+        let vc = segue.destination as! LandmarksTableViewController
+        vc.metroStation = stations[row]
+    }
     
 }
 extension StationsTableViewController: FetchStationsDelegate {
     func stationsFound(_ metroStations: [MetroStation]) {
-        print("stations found - here they are in the controller!")
+        print("stations found")
         DispatchQueue.main.async {
             self.stations = metroStations
-//            MBProgressHUD.hide(for: self.view, animated: true)
-    }
+            MBProgressHUD.hide(for: self.view, animated: true)
+        }
     }
     
-    func stationsNotFound() {
-        print("no stations found")
-        
+    func stationsNotFound(reason: FetchMetroStationsManager.FailureReason) {
         DispatchQueue.main.async {
-            //MBProgressHUD.hide(for: self.view, animated: true)
+            MBProgressHUD.hide(for: self.view, animated: true)
+            let alertController = UIAlertController(title: "Problem fetching stations", message: reason.rawValue, preferredStyle: .alert)
+            switch(reason) {
+            case .noResponse:
+                let retryAction = UIAlertAction(title: "Retry", style: .default, handler: { (action) in
+                    self.fetchStations()
+                })
+                
+                let cancelAction = UIAlertAction(title: "Cancel", style: .default, handler:nil)
+                
+                alertController.addAction(cancelAction)
+                alertController.addAction(retryAction)
+                
+            case .non200Response, .noData, .badData:
+                let okayAction = UIAlertAction(title: "Okay", style: .default, handler:nil)
+                
+                alertController.addAction(okayAction)
+            }
+            
+            self.present(alertController, animated: true, completion: nil)
+            
         }
     }
     
