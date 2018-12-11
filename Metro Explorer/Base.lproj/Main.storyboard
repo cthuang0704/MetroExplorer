@@ -255,11 +255,14 @@
                         <viewLayoutGuide key="safeArea" id="XaL-WI-Z2F"/>
                     </view>
                     <navigationItem key="navigationItem" title="Detail" id="rdn-f0-Hng">
-                        <barButtonItem key="rightBarButtonItem" systemItem="action" id="qx4-Oo-lDI">
-                            <connections>
-                                <action selector="shareButtonPressed:" destination="lRb-kF-9ZR" id="WFw-KR-Y8o"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem systemItem="action" id="qx4-Oo-lDI">
+                                <connections>
+                                    <action selector="shareButtonPressed:" destination="lRb-kF-9ZR" id="WFw-KR-Y8o"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="Fav" style="plain" id="rVj-TJ-6oG"/>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
                         <outlet property="detailImage" destination="9fW-K0-i1M" id="9Re-3L-tXw"/>

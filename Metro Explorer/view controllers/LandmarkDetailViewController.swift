@@ -17,7 +17,7 @@ class LandmarkDetailViewController: UIViewController {
     @IBOutlet weak var ratingLabel: UILabel!
 
     @IBAction func AddressButtonPressed(_ sender: Any) {
-        let link = URL(string: "http://maps.apple.com/?daddr=\(landmark!.latitude!),\(landmark!.longitude!)&dirflg=r")
+        let link = URL(string: "http://maps.apple.com/?daddr=\(landmark!.latitude),\(landmark!.longitude)&dirflg=r")
         UIApplication.shared.openURL(link!)
         
     }
