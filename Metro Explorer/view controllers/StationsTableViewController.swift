@@ -11,7 +11,7 @@ import MBProgressHUD
 
 class StationsTableViewController: UITableViewController {
     
-//    let locationDetector = LocationDetector()
+    let fetchMetroStationsManager = FetchMetroStationsManager()
     var stations = [MetroStation]() {
         didSet {
             tableView.reloadData()
@@ -20,18 +20,15 @@ class StationsTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let fetchMetroStationsManager = FetchMetroStationsManager()
         fetchMetroStationsManager.delegate = self
-         MBProgressHUD.showAdded(to: self.view, animated: true)
-//        locationDetector.delegate = self
+        MBProgressHUD.showAdded(to: self.view, animated: true)
         fetchMetroStationsManager.fetchStations()
+//        fetchStations()
     
     }
     
     private func fetchStations() {
-        //MBProgressHUD.showAdded(to: self.view, animated: true)
-//        locationDetector.findLocation()
+ //       MBProgressHUD.showAdded(to: self.view, animated: true)
     }
 
     // MARK: - Table view data source

@@ -9,6 +9,8 @@
 import UIKit
 
 class LandmarksTableViewController: UITableViewController {
+    
+    let fetchLandmarksManager = FetchLandmarksManager()
     var metroStation: MetroStation?
     var landmarks = [Landmark]() {
         didSet {
@@ -18,11 +20,8 @@ class LandmarksTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        let fetchLandmarksManager = FetchLandmarksManager()
         fetchLandmarksManager.delegate = self
-//        MBProgressHUD.showAdded(to: self.view, animated: true)
-        //        locationDetector.delegate = self
+       // MBProgressHUD.showAdded(to: self.view, animated: true)
         fetchLandmarksManager.fetchLandmarks(latitude: metroStation!.latitude, longitude: metroStation!.longitude)
         
         
@@ -47,11 +46,27 @@ class LandmarksTableViewController: UITableViewController {
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "landmarkCell", for: indexPath)
-
+        let cell = tableView.dequeueReusableCell(withIdentifier: "landmarkCell", for: indexPath) as! LandmarkTableViewCell
         let landmark = landmarks[indexPath.row]
-        cell.textLabel?.text =  landmark.name
+        if let urlString = landmark.imageUrl, let url = URL(string: urlString){
+             cell.LandmarkImage.load(url: url)
+        }
+        cell.LandmarkNameLabel.text = landmark.name
+        cell.LandmarkAddressLabel.text = landmark.location.displayAddress.joined(separator: ", ")
+       
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+         performSegue(withIdentifier: "detailSegue", sender: indexPath.row)
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let row  = sender as! Int
+        let vc = segue.destination as! LandmarkDetailViewController
+        vc.landmark = landmarks[row]
+       // vc.metroStation = stations[row]
+        //vc.landmarkDetail = landmarks[row]
+        
     }
 
 }

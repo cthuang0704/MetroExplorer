@@ -10,9 +10,9 @@ import UIKit
 
 class LandmarkTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var LandmarkAddressLabel: UILabel!
     @IBOutlet weak var LandmarkNameLabel: UILabel!
     @IBOutlet weak var LandmarkImage: UIImageView!
+    @IBOutlet weak var LandmarkAddressLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

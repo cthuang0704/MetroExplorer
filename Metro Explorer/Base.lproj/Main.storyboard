@@ -83,7 +83,7 @@
             </objects>
             <point key="canvasLocation" x="1087" y="-672"/>
         </scene>
-        <!--Stations Table View Controller-->
+        <!--Stations-->
         <scene sceneID="ZIw-Q2-HUh">
             <objects>
                 <tableViewController id="vNa-s5-jWw" customClass="StationsTableViewController" customModule="Metro_Explorer" customModuleProvider="target" sceneMemberID="viewController">
@@ -106,6 +106,7 @@
                             <outlet property="delegate" destination="vNa-s5-jWw" id="U2c-ae-8Fx"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" title="Stations" id="VO4-x0-y6x"/>
                     <connections>
                         <segue destination="yeX-qX-iMn" kind="show" identifier="landmarkSegue" id="eBh-Vo-EGC"/>
                     </connections>
@@ -114,7 +115,7 @@
             </objects>
             <point key="canvasLocation" x="2137" y="-637"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Favorites-->
         <scene sceneID="TH2-Nn-ecp">
             <objects>
                 <tableViewController id="rXu-0S-FOP" sceneMemberID="viewController">
@@ -137,12 +138,13 @@
                             <outlet property="delegate" destination="rXu-0S-FOP" id="Pgf-gJ-C2v"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" title="Favorites" id="34t-sT-Afn"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="94G-wh-Bee" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1086" y="112"/>
         </scene>
-        <!--Landmarks Table View Controller-->
+        <!--Landmarks-->
         <scene sceneID="FA4-g6-XCg">
             <objects>
                 <tableViewController id="yeX-qX-iMn" customClass="LandmarksTableViewController" customModule="Metro_Explorer" customModuleProvider="target" sceneMemberID="viewController">
@@ -158,30 +160,45 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="74.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="g7R-hC-rYv">
-                                            <rect key="frame" x="272" y="-27" width="103" height="123"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="i7p-OQ-Aj6">
+                                            <rect key="frame" x="10" y="10" width="295" height="54.5"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UTM-aS-uIY">
+                                                    <rect key="frame" x="0.0" y="0.0" width="295" height="27.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OjK-4i-Pab">
+                                                    <rect key="frame" x="0.0" y="27.5" width="295" height="27"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                    <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </stackView>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="g7R-hC-rYv">
+                                            <rect key="frame" x="315" y="10" width="50" height="50"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="50" id="3P6-Ns-AAw"/>
+                                                <constraint firstAttribute="height" constant="50" id="CYI-Kw-zVA"/>
+                                            </constraints>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="LandmarkName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UTM-aS-uIY">
-                                            <rect key="frame" x="28" y="11" width="72" height="21"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="LandmarkAddress" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OjK-4i-Pab">
-                                            <rect key="frame" x="28" y="40" width="66" height="21"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="g7R-hC-rYv" secondAttribute="trailing" constant="10" id="CeP-Cj-Yct"/>
+                                        <constraint firstItem="g7R-hC-rYv" firstAttribute="top" secondItem="Bmt-3o-t27" secondAttribute="top" constant="10" id="N7D-xr-GBg"/>
+                                        <constraint firstItem="g7R-hC-rYv" firstAttribute="leading" secondItem="i7p-OQ-Aj6" secondAttribute="trailing" constant="10" id="ONn-HQ-6lM"/>
+                                        <constraint firstItem="i7p-OQ-Aj6" firstAttribute="leading" secondItem="Bmt-3o-t27" secondAttribute="leading" constant="10" id="PHn-eM-Sho"/>
+                                        <constraint firstItem="i7p-OQ-Aj6" firstAttribute="top" secondItem="Bmt-3o-t27" secondAttribute="top" constant="10" id="SA5-0n-aeZ"/>
+                                        <constraint firstItem="g7R-hC-rYv" firstAttribute="leading" secondItem="i7p-OQ-Aj6" secondAttribute="trailing" constant="10" id="ddY-7P-P7w"/>
+                                        <constraint firstAttribute="bottom" secondItem="i7p-OQ-Aj6" secondAttribute="bottom" constant="10" id="gBr-Ib-HWM"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="LandmarkAddressLabel" destination="OjK-4i-Pab" id="by0-oN-tTG"/>
-                                    <outlet property="LandmarkImage" destination="g7R-hC-rYv" id="cMK-wW-IMo"/>
-                                    <outlet property="LandmarkNameLabel" destination="UTM-aS-uIY" id="93m-2y-QSp"/>
+                                    <outlet property="LandmarkAddressLabel" destination="OjK-4i-Pab" id="GgW-VS-yMD"/>
+                                    <outlet property="LandmarkImage" destination="g7R-hC-rYv" id="1bv-yw-iTz"/>
+                                    <outlet property="LandmarkNameLabel" destination="UTM-aS-uIY" id="Wum-3n-MkE"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -190,11 +207,69 @@
                             <outlet property="delegate" destination="yeX-qX-iMn" id="PLJ-bV-5WO"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="UTF-iY-QfD"/>
+                    <navigationItem key="navigationItem" title="Landmarks" id="UTF-iY-QfD"/>
+                    <connections>
+                        <segue destination="lRb-kF-9ZR" kind="show" identifier="detailSegue" id="1in-sM-b9c"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nbG-gg-zhv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2136.8000000000002" y="-1383.0584707646178"/>
+        </scene>
+        <!--Detail-->
+        <scene sceneID="ges-6X-vaJ">
+            <objects>
+                <viewController id="lRb-kF-9ZR" customClass="LandmarkDetailViewController" customModule="Metro_Explorer" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="k31-SV-4z9">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9fW-K0-i1M">
+                                <rect key="frame" x="67" y="87" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2xQ-Ae-B30">
+                                <rect key="frame" x="41" y="263" width="45" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Rating" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pnv-SB-vj1">
+                                <rect key="frame" x="41" y="317" width="49" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AeD-W0-dil">
+                                <rect key="frame" x="37" y="376" width="57" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Address"/>
+                                <connections>
+                                    <action selector="AddressButtonPressed:" destination="lRb-kF-9ZR" eventType="touchUpInside" id="nNJ-mb-rNk"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="XaL-WI-Z2F"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Detail" id="rdn-f0-Hng">
+                        <barButtonItem key="rightBarButtonItem" systemItem="action" id="qx4-Oo-lDI">
+                            <connections>
+                                <action selector="shareButtonPressed:" destination="lRb-kF-9ZR" id="WFw-KR-Y8o"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="detailImage" destination="9fW-K0-i1M" id="9Re-3L-tXw"/>
+                        <outlet property="nameLabel" destination="2xQ-Ae-B30" id="Ny1-z5-Hny"/>
+                        <outlet property="ratingLabel" destination="pnv-SB-vj1" id="HRh-mf-yE5"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Rqh-JN-FjF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3000.8000000000002" y="-1383.0584707646178"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="NKp-na-zac">
