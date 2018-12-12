@@ -86,7 +86,8 @@ class FetchLandmarksManager {
 
 //                    let landmark = Landmark(name: landmark.Name)
 //                    landmark.append(landmark)
-                    let landmark = Landmark(name: landmark.name, location: landmark.location,latitude: landmark.coordinates.latitude, longitude: landmark.coordinates.longitude, imageUrl: landmark.imageUrl)
+//                     let landmark = Landmark(name: landmark.name, location: landmark.location,latitude: landmark.coordinates.latitude, longitude: landmark.coordinates.longitude, imageUrl: landmark.imageUrl)
+                    let landmark = Landmark(name: landmark.name, location: landmark.location,latitude: landmark.coordinates.latitude, longitude: landmark.coordinates.longitude, rating: landmark.rating, id: landmark.id, imageUrl: landmark.imageUrl)
                     
                     landmarks.append(landmark)
                     

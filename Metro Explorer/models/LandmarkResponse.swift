@@ -17,7 +17,7 @@ struct LandmarkResponse: Codable {
 
 struct Businesses: Codable {
     
-//    let id: String
+    let id: String
 //    let alias: String
     let name: String
     let imageUrl: String?
@@ -25,7 +25,7 @@ struct Businesses: Codable {
 //    let url: URL
 //    let reviewCount: Int
 //    let categories: [Categories]
-//    let rating: Int
+    let rating: Double
     let coordinates: Coordinates
 //    let transactions: [Any] // TODO: Please provide a codable type, because Any isn't one.
     let location: Location
@@ -34,7 +34,7 @@ struct Businesses: Codable {
 //    let distance: Double
     
     private enum CodingKeys: String, CodingKey {
-//        case id
+        case id
 //        case alias
         case name
         case imageUrl = "image_url"
@@ -42,7 +42,7 @@ struct Businesses: Codable {
 //        case url
 //        case reviewCount = "review_count"
 //        case categories
-//        case rating
+        case rating
         case coordinates
 //        case transactions
         case location

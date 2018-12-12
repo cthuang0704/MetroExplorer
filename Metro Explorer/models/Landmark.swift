@@ -12,5 +12,7 @@ struct Landmark: Codable {
     let location: Location
     let latitude: Double
     let longitude: Double
+    let rating: Double
+    let id: String
     let imageUrl: String?
 }

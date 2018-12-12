@@ -12,16 +12,26 @@ class PersistenceManager {
     static let sharedInstance = PersistenceManager()
     
     let landmarksKey = "landmarks"
- /*
+ 
     func saveLandmarks(landmark: Landmark) {
         let userDefaults = UserDefaults.standard
-        
         var landmarks = fetchLandmarks()
+        
         landmarks.append(landmark)
-        
         let encoder = JSONEncoder()
-       let encodedLandmarks = try? encoder.encode(landmarks)
-        
+        let encodedLandmarks = try? encoder.encode(landmarks)
+        userDefaults.set(encodedLandmarks, forKey: landmarksKey)
+    }
+    
+    func removeLandmarks(landmark: Landmark){
+        let userDefaults = UserDefaults.standard
+        var landmarks = fetchLandmarks()
+        if let index: Int = landmarks.firstIndex(where: {$0.id == landmark.id}){
+            landmarks.remove(at: index)
+        }
+
+        let encoder = JSONEncoder()
+        let encodedLandmarks = try? encoder.encode(landmarks)
         userDefaults.set(encodedLandmarks, forKey: landmarksKey)
     }
     
@@ -35,25 +45,14 @@ class PersistenceManager {
         else {
             return [Landmark]()
         }
- 
-        
     }
-    
-    
-
-    func fetchWorkouts() -> [Workout] {
-        let userDefaults = UserDefaults.standard
+    func checkFavorite(landmark: Landmark) -> Bool{
         
-        if let workoutData = userDefaults.data(forKey: workoutsKey), let workouts = try? JSONDecoder().decode([Workout].self, from: workoutData) {
-            //workoutData is non-nil and successfully decoded
-            return workouts
-        }
-        else {
-            return [Workout]()
+        if fetchLandmarks().contains(where: {$0.id == landmark.id}){
+            return true
+        }else{
+            return false
         }
     }
     
-   
- */
- 
 }

@@ -53,6 +53,9 @@
                                 <state key="normal" title="Favorite">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="FavoriteButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="T5h-sq-AIU"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.69860356504361221" green="1" blue="0.82422549767054187" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -76,7 +79,7 @@
                     <connections>
                         <segue destination="vNa-s5-jWw" kind="show" identifier="stationsSegue" id="Uln-lk-oh8"/>
                         <segue destination="yeX-qX-iMn" kind="show" identifier="nearestSegue" id="sl9-ty-xDW"/>
-                        <segue destination="rXu-0S-FOP" kind="show" identifier="favoriteSegue" id="sPi-If-USn"/>
+                        <segue destination="yeX-qX-iMn" kind="show" identifier="favoriteResultSegue" id="m8g-Rb-lMM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -114,35 +117,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0eT-BN-eGR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2137" y="-637"/>
-        </scene>
-        <!--Favorites-->
-        <scene sceneID="TH2-Nn-ecp">
-            <objects>
-                <tableViewController id="rXu-0S-FOP" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="rE0-HZ-OLo">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="favoriteCell" id="aKL-vj-ZlC">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="aKL-vj-ZlC" id="8l5-0m-k4o">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="rXu-0S-FOP" id="xeg-Sm-dnN"/>
-                            <outlet property="delegate" destination="rXu-0S-FOP" id="Pgf-gJ-C2v"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" title="Favorites" id="34t-sT-Afn"/>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="94G-wh-Bee" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1086" y="112"/>
         </scene>
         <!--Landmarks-->
         <scene sceneID="FA4-g6-XCg">
@@ -224,27 +198,26 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9fW-K0-i1M">
-                                <rect key="frame" x="67" y="87" width="240" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9fW-K0-i1M">
+                                <rect key="frame" x="67" y="87" width="241" height="128"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="128" id="J40-7I-med"/>
+                                </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2xQ-Ae-B30">
-                                <rect key="frame" x="41" y="263" width="45" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2xQ-Ae-B30">
+                                <rect key="frame" x="42" y="263" width="45" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Rating" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pnv-SB-vj1">
-                                <rect key="frame" x="41" y="317" width="49" height="32"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rating" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pnv-SB-vj1">
+                                <rect key="frame" x="41" y="311" width="49" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AeD-W0-dil">
-                                <rect key="frame" x="37" y="376" width="57" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AeD-W0-dil">
+                                <rect key="frame" x="37" y="358.5" width="57" height="30"/>
                                 <state key="normal" title="Address"/>
                                 <connections>
                                     <action selector="AddressButtonPressed:" destination="lRb-kF-9ZR" eventType="touchUpInside" id="nNJ-mb-rNk"/>
@@ -252,6 +225,18 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="pnv-SB-vj1" firstAttribute="top" secondItem="2xQ-Ae-B30" secondAttribute="bottom" constant="27" id="CX0-NZ-IRw"/>
+                            <constraint firstItem="9fW-K0-i1M" firstAttribute="centerX" secondItem="k31-SV-4z9" secondAttribute="centerX" id="GXG-er-nE3"/>
+                            <constraint firstItem="AeD-W0-dil" firstAttribute="leading" secondItem="XaL-WI-Z2F" secondAttribute="leading" constant="37" id="S65-hS-7Mn"/>
+                            <constraint firstItem="pnv-SB-vj1" firstAttribute="leading" secondItem="XaL-WI-Z2F" secondAttribute="leading" constant="41" id="UVX-1r-Opr"/>
+                            <constraint firstItem="9fW-K0-i1M" firstAttribute="top" secondItem="XaL-WI-Z2F" secondAttribute="top" constant="23" id="XX5-4X-1Dc"/>
+                            <constraint firstItem="2xQ-Ae-B30" firstAttribute="top" secondItem="9fW-K0-i1M" secondAttribute="bottom" constant="48" id="bC0-gV-rBr"/>
+                            <constraint firstItem="XaL-WI-Z2F" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="2xQ-Ae-B30" secondAttribute="trailing" symbolic="YES" id="kMh-ok-YxE"/>
+                            <constraint firstItem="AeD-W0-dil" firstAttribute="top" secondItem="pnv-SB-vj1" secondAttribute="bottom" constant="27" id="luy-uh-OyT"/>
+                            <constraint firstItem="9fW-K0-i1M" firstAttribute="leading" secondItem="XaL-WI-Z2F" secondAttribute="leading" constant="67" id="tx6-Lf-fCp"/>
+                            <constraint firstItem="2xQ-Ae-B30" firstAttribute="leading" secondItem="XaL-WI-Z2F" secondAttribute="leading" constant="42" id="w3B-al-iAu"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="XaL-WI-Z2F"/>
                     </view>
                     <navigationItem key="navigationItem" title="Detail" id="rdn-f0-Hng">
@@ -261,13 +246,19 @@
                                     <action selector="shareButtonPressed:" destination="lRb-kF-9ZR" id="WFw-KR-Y8o"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem title="Fav" style="plain" id="rVj-TJ-6oG"/>
+                            <barButtonItem title="Fav" style="plain" id="rVj-TJ-6oG">
+                                <connections>
+                                    <action selector="favoriteButtonPressed:" destination="lRb-kF-9ZR" id="Z3f-yE-Ygl"/>
+                                </connections>
+                            </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
+                        <outlet property="AddressButtonText" destination="AeD-W0-dil" id="hWR-j8-Qj6"/>
                         <outlet property="detailImage" destination="9fW-K0-i1M" id="9Re-3L-tXw"/>
                         <outlet property="nameLabel" destination="2xQ-Ae-B30" id="Ny1-z5-Hny"/>
                         <outlet property="ratingLabel" destination="pnv-SB-vj1" id="HRh-mf-yE5"/>
+                        <segue destination="yeX-qX-iMn" kind="show" identifier="favoriteSegue" id="9hB-Ai-mrq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rqh-JN-FjF" userLabel="First Responder" sceneMemberID="firstResponder"/>

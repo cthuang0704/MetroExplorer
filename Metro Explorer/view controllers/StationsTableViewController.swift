@@ -10,7 +10,7 @@ import UIKit
 import MBProgressHUD
 
 class StationsTableViewController: UITableViewController {
-    
+    var flag: String = ""
     let fetchMetroStationsManager = FetchMetroStationsManager()
     var stations = [MetroStation]() {
         didSet {
@@ -54,10 +54,12 @@ class StationsTableViewController: UITableViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let row  = sender as! Int
-        
-        let vc = segue.destination as! LandmarksTableViewController
-        vc.metroStation = stations[row]
+        if segue.identifier == "landmarkSegue"{
+            let vc = segue.destination as! LandmarksTableViewController
+            let row  = sender as! Int
+            vc.metroStation = stations[row]
+            vc.flag = "LM"
+        }
     }
     
 }
@@ -81,7 +83,6 @@ extension StationsTableViewController: FetchStationsDelegate {
                 })
                 
                 let cancelAction = UIAlertAction(title: "Cancel", style: .default, handler:nil)
-                
                 alertController.addAction(cancelAction)
                 alertController.addAction(retryAction)
                 

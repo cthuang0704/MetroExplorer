@@ -7,10 +7,15 @@
 //
 
 import UIKit
+import MBProgressHUD
+import CoreLocation
 
 class LandmarksTableViewController: UITableViewController {
-    
+    let locationManager = CLLocationManager()
+    let locationDetector = LocationDetector()
     let fetchLandmarksManager = FetchLandmarksManager()
+    let persistenceManager = PersistenceManager()
+    var flag: String = ""
     var metroStation: MetroStation?
     var landmarks = [Landmark]() {
         didSet {
@@ -20,11 +25,15 @@ class LandmarksTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        locationManager.requestWhenInUseAuthorization()
         fetchLandmarksManager.delegate = self
-       // MBProgressHUD.showAdded(to: self.view, animated: true)
-        fetchLandmarksManager.fetchLandmarks(latitude: metroStation!.latitude, longitude: metroStation!.longitude)
         
-        
+        if flag == "LM"{
+            MBProgressHUD.showAdded(to: self.view, animated: true)
+            fetchLandmarksManager.fetchLandmarks(latitude: metroStation!.latitude, longitude: metroStation!.longitude)
+        } else{
+            landmarks = PersistenceManager.sharedInstance.fetchLandmarks()
+        }
     }
     
     private func fetchLandmarks() {
@@ -46,14 +55,15 @@ class LandmarksTableViewController: UITableViewController {
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "landmarkCell", for: indexPath) as! LandmarkTableViewCell
-        let landmark = landmarks[indexPath.row]
-        if let urlString = landmark.imageUrl, let url = URL(string: urlString){
-             cell.LandmarkImage.load(url: url)
-        }
-        cell.LandmarkNameLabel.text = landmark.name
-        cell.LandmarkAddressLabel.text = landmark.location.displayAddress.joined(separator: ", ")
-       
+      
+            let cell = tableView.dequeueReusableCell(withIdentifier: "landmarkCell", for: indexPath) as! LandmarkTableViewCell
+            let landmark = landmarks[indexPath.row]
+            if let urlString = landmark.imageUrl, let url = URL(string: urlString){
+                cell.LandmarkImage.load(url: url)
+            }
+            cell.LandmarkNameLabel.text = landmark.name
+            cell.LandmarkAddressLabel.text = landmark.location.displayAddress.joined(separator: ", ")
+        
         return cell
     }
     
@@ -64,11 +74,21 @@ class LandmarksTableViewController: UITableViewController {
         let row  = sender as! Int
         let vc = segue.destination as! LandmarkDetailViewController
         vc.landmark = landmarks[row]
-       // vc.metroStation = stations[row]
-        //vc.landmarkDetail = landmarks[row]
-        
     }
 
+}
+
+extension LandmarksTableViewController: LocationDetectorDelegate {
+    func locationDetected(latitude: Double, longitude: Double) {
+        fetchLandmarksManager.fetchLandmarks(latitude: latitude, longitude: longitude)
+    }
+    
+    func locationNotDetected() {
+        print("no location found :(")
+        DispatchQueue.main.async {
+            MBProgressHUD.hide(for: self.view, animated: true)
+        }
+    }
 }
 
 extension LandmarksTableViewController: FetchLandmarksDelegate{
@@ -76,13 +96,13 @@ extension LandmarksTableViewController: FetchLandmarksDelegate{
         print("lankmarks found")
         DispatchQueue.main.async {
             self.landmarks = landmarks
-//            MBProgressHUD.hide(for: self.view, animated: true)
+            MBProgressHUD.hide(for: self.view, animated: true)
         }
     }
     
     func landmarksNotFound(reason: FetchLandmarksManager.FailureReason) {
         DispatchQueue.main.async {
-//            MBProgressHUD.hide(for: self.view, animated: true)
+            MBProgressHUD.hide(for: self.view, animated: true)
             let alertController = UIAlertController(title: "Problem fetching landmatks", message: reason.rawValue, preferredStyle: .alert)
             switch(reason) {
             case .noResponse:
