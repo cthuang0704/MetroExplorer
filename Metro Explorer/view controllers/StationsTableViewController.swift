@@ -31,28 +31,27 @@ class StationsTableViewController: UITableViewController {
  //       MBProgressHUD.showAdded(to: self.view, animated: true)
     }
 
-    // MARK: - Table view data source
-
+    
+    //return the number of sections
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
-
+    //return number of rows
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         return stations.count
     }
-    
+    //return cell with data from API
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "stationCell", for: indexPath)
         cell.textLabel?.text = stations[indexPath.row].name
         return cell
     }
-    
+    //go to LandmarksTableViewController after select a station
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         performSegue(withIdentifier: "landmarkSegue", sender: indexPath.row)
     }
-    
+    //sending data to LandmarksTableViewController
+    //tell the LandmarksTableViewController to show landmarks nearby instead of favorite by using flag
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "landmarkSegue"{
             let vc = segue.destination as! LandmarksTableViewController
@@ -63,6 +62,9 @@ class StationsTableViewController: UITableViewController {
     }
     
 }
+
+//hide "MBProgressHUD" after loading
+//when stations not found, show reasons
 extension StationsTableViewController: FetchStationsDelegate {
     func stationsFound(_ metroStations: [MetroStation]) {
         print("stations found")
@@ -88,7 +90,6 @@ extension StationsTableViewController: FetchStationsDelegate {
                 
             case .non200Response, .noData, .badData:
                 let okayAction = UIAlertAction(title: "Okay", style: .default, handler:nil)
-                
                 alertController.addAction(okayAction)
             }
             
@@ -96,6 +97,5 @@ extension StationsTableViewController: FetchStationsDelegate {
             
         }
     }
-    
 }
 

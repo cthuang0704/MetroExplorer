@@ -27,15 +27,14 @@ class LandmarkDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         MBProgressHUD.showAdded(to: self.view, animated: true)
+        
         //display the landmark detail
         if let urlString = landmark?.imageUrl, let url = URL(string: urlString){
             detailImage.load(url: url)
         }
-        
         let rating = landmark?.rating ?? 0.0
         nameLabel?.text = landmark?.name
         ratingLabel?.text = ("Rating: \(rating)")
-
         //change button content to landmark address
         AddressButtonText.setTitle(landmark?.location.displayAddress.joined(separator: ", "), for: UIControl.State.normal)
         MBProgressHUD.hide(for: self.view, animated: true)
@@ -45,12 +44,15 @@ class LandmarkDetailViewController: UIViewController {
         <#code#>
     }
 */
+    //function of "Share" button
+    //copy the landmark info and share it.
     @IBAction func shareButtonPressed(_ sender: Any) {
         let shareText = "Check out this landmark: \(landmark?.name) \(landmark?.location.displayAddress.joined(separator: ", "))"
         let activityViewController = UIActivityViewController(activityItems: [shareText], applicationActivities: nil)
         present(activityViewController, animated: true, completion: nil)
     }
-    
+    //function of "Favorite" button
+    //remove a landmark if it is already in favorites, else add it to favorite
     @IBAction func favoriteButtonPressed(_ sender: Any) {
         if PersistenceManager.sharedInstance.checkFavorite(landmark: landmark!){
             PersistenceManager.sharedInstance.removeLandmarks(landmark: landmark!)
@@ -58,5 +60,4 @@ class LandmarkDetailViewController: UIViewController {
             PersistenceManager.sharedInstance.saveLandmarks(landmark: landmark!)
         }
     }
-
 }

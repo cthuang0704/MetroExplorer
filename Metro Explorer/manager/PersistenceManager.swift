@@ -10,9 +10,9 @@ import Foundation
 
 class PersistenceManager {
     static let sharedInstance = PersistenceManager()
-    
     let landmarksKey = "landmarks"
- 
+    
+    //save to favorites
     func saveLandmarks(landmark: Landmark) {
         let userDefaults = UserDefaults.standard
         var landmarks = fetchLandmarks()
@@ -22,32 +22,30 @@ class PersistenceManager {
         let encodedLandmarks = try? encoder.encode(landmarks)
         userDefaults.set(encodedLandmarks, forKey: landmarksKey)
     }
-    
+    //remove from favorites
     func removeLandmarks(landmark: Landmark){
         let userDefaults = UserDefaults.standard
         var landmarks = fetchLandmarks()
         if let index: Int = landmarks.firstIndex(where: {$0.id == landmark.id}){
             landmarks.remove(at: index)
         }
-
         let encoder = JSONEncoder()
         let encodedLandmarks = try? encoder.encode(landmarks)
         userDefaults.set(encodedLandmarks, forKey: landmarksKey)
     }
-    
+    //get landmarks
     func fetchLandmarks() -> [Landmark] {
         let userDefaults = UserDefaults.standard
         if let landmarkData = userDefaults.data(forKey: landmarksKey), let landmarks = try?
             JSONDecoder().decode([Landmark].self, from: landmarkData){
-            //workoutData is non-nil and successfully decoded
             return landmarks
         }
         else {
             return [Landmark]()
         }
     }
+    //check if a landmark is already in Favorites by using its id
     func checkFavorite(landmark: Landmark) -> Bool{
-        
         if fetchLandmarks().contains(where: {$0.id == landmark.id}){
             return true
         }else{

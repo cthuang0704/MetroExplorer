@@ -10,12 +10,10 @@ import Foundation
 import CoreLocation
 
 protocol LocationDetectorDelegate{
-    func locationDetected(latitude: Double, longitude: Double)
+    func locationDetected(latitude: Double, longitude: Double)//location detected
     func locationNotDetected()//for no signal or no permission or time out
     
 }
-
-//things todo: handle timeout, write code yourself
 
 class LocationDetector: NSObject{
     let locationManager = CLLocationManager()
@@ -26,7 +24,7 @@ class LocationDetector: NSObject{
         locationManager.delegate = self
     }
     func findLocation(){
-       let permissionStatus = CLLocationManager.authorizationStatus()
+        let permissionStatus = CLLocationManager.authorizationStatus()
         
         switch(permissionStatus) {
         case .notDetermined:
@@ -68,7 +66,5 @@ extension LocationDetector: CLLocationManagerDelegate{
             delegate?.locationNotDetected()
         }
     }
-    
-    
     
 }

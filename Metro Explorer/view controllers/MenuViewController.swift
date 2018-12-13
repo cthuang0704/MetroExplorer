@@ -13,27 +13,27 @@ import MBProgressHUD
 class MenuViewController: UIViewController {
     let fetchLandmarksManager = FetchLandmarksManager()
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-   //     locationManager.delegate = self
-        
-        // Do any additional setup after loading the view, typically from a nib.
+
     }
+    //Press the "Nearest" Button to go to LandmarksTableViewController
     @IBAction func NearestButtonPressed(_ sender: Any) {
         print("nearest button pressed")
-        //locationDetector.delegate = self
         performSegue(withIdentifier: "nearestSegue", sender: self)
     }
+    //Press the "Select Station" Button to go to StationsTableViewController
     @IBAction func StationButtonPressed(_ sender: Any) {
         print("station button pressed")
         performSegue(withIdentifier: "stationsSegue", sender: self)
     }
+    //Press the "Favorite" Button to go to LandmarksTableViewController and display favorite landmarks
     @IBAction func FavoriteButtonPressed(_ sender: Any) {
         print("station button pressed")
         performSegue(withIdentifier: "favoriteResultSegue", sender: self)
     }
     
+    //use flag to make distingulish between Nearest landmarks and favorites
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "nearestSegue"{
             let vc = segue.destination as! LandmarksTableViewController
@@ -44,6 +44,7 @@ class MenuViewController: UIViewController {
             vc.flag = "FAV"
         }
     }
+    
 }
 
 

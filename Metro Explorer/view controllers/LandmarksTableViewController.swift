@@ -14,9 +14,11 @@ class LandmarksTableViewController: UITableViewController {
     let locationManager = CLLocationManager()
     let locationDetector = LocationDetector()
     let fetchLandmarksManager = FetchLandmarksManager()
+    let fetchMetroStationsManager = FetchMetroStationsManager()
     let persistenceManager = PersistenceManager()
     var flag: String = ""
     var metroStation: MetroStation?
+    var currentLocation = CLLocation()
     var landmarks = [Landmark]() {
         didSet {
             tableView.reloadData()
@@ -27,35 +29,31 @@ class LandmarksTableViewController: UITableViewController {
         super.viewDidLoad()
         locationManager.requestWhenInUseAuthorization()
         fetchLandmarksManager.delegate = self
-        
+        MBProgressHUD.showAdded(to: self.view, animated: true)
         if flag == "LM"{
-            MBProgressHUD.showAdded(to: self.view, animated: true)
             fetchLandmarksManager.fetchLandmarks(latitude: metroStation!.latitude, longitude: metroStation!.longitude)
         } else{
+            MBProgressHUD.hide(for: self.view, animated: true)
             landmarks = PersistenceManager.sharedInstance.fetchLandmarks()
         }
     }
     
     private func fetchLandmarks() {
         //MBProgressHUD.showAdded(to: self.view, animated: true)
-        //        locationDetector.findLocation()
+        //locationDetector.findLocation()
     }
 
-    // MARK: - Table view data source
-
+    //Table view data source
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
-
+    //return the number of rows
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         return landmarks.count
     }
 
-    
+    //return cell with data from API
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-      
             let cell = tableView.dequeueReusableCell(withIdentifier: "landmarkCell", for: indexPath) as! LandmarkTableViewCell
             let landmark = landmarks[indexPath.row]
             if let urlString = landmark.imageUrl, let url = URL(string: urlString){
@@ -63,13 +61,13 @@ class LandmarksTableViewController: UITableViewController {
             }
             cell.LandmarkNameLabel.text = landmark.name
             cell.LandmarkAddressLabel.text = landmark.location.displayAddress.joined(separator: ", ")
-        
         return cell
     }
-    
+    //go to LandmarksDetailViewController after select a landmark
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
          performSegue(withIdentifier: "detailSegue", sender: indexPath.row)
     }
+    //sending data to LandmarksTableViewController
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let row  = sender as! Int
         let vc = segue.destination as! LandmarkDetailViewController
@@ -78,6 +76,7 @@ class LandmarksTableViewController: UITableViewController {
 
 }
 
+//get latitude and longitude of the landmark
 extension LandmarksTableViewController: LocationDetectorDelegate {
     func locationDetected(latitude: Double, longitude: Double) {
         fetchLandmarksManager.fetchLandmarks(latitude: latitude, longitude: longitude)
@@ -91,6 +90,8 @@ extension LandmarksTableViewController: LocationDetectorDelegate {
     }
 }
 
+//hide "MBProgressHUD" after loading
+//when landmarks not found, show reasons
 extension LandmarksTableViewController: FetchLandmarksDelegate{
     func landmarksFound(_ landmarks: [Landmark]) {
         print("lankmarks found")
@@ -109,7 +110,6 @@ extension LandmarksTableViewController: FetchLandmarksDelegate{
                 let retryAction = UIAlertAction(title: "Retry", style: .default, handler: { (action) in
                     self.fetchLandmarks()
                 })
-                
                 let cancelAction = UIAlertAction(title: "Cancel", style: .default, handler:nil)
                 
                 alertController.addAction(cancelAction)
@@ -122,11 +122,31 @@ extension LandmarksTableViewController: FetchLandmarksDelegate{
             }
             
             self.present(alertController, animated: true, completion: nil)
-            
-        
         }
-    
     }
-    
-    
 }
+
+//caculate the nearest station to show its landmarks
+extension LandmarksTableViewController: FetchStationsDelegate{
+    func stationsFound(_ metroStations: [MetroStation]){
+        print("lankmarks found")
+
+        //       currentLocation(locationDetector.findLocation().)
+        DispatchQueue.main.async {
+            var distances: [Double]
+            for metroStation in metroStations {
+           // let distance = currentLocation.distance(from: metroStation)
+            }
+            
+        }
+        
+    }
+    func stationsNotFound(reason: FetchMetroStationsManager.FailureReason){
+        print("lankmarks not found")
+        DispatchQueue.main.async {
+            
+        }
+        
+    }
+}
+
