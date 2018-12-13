@@ -197,9 +197,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" alignment="top" spacing="34" translatesAutoresizingMaskIntoConstraints="NO" id="Kz4-Dj-VDp">
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="34" translatesAutoresizingMaskIntoConstraints="NO" id="Kz4-Dj-VDp">
                                 <rect key="frame" x="67" y="83" width="241" height="301"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9fW-K0-i1M">
                                         <rect key="frame" x="0.0" y="0.0" width="241" height="128"/>
@@ -207,7 +206,7 @@
                                             <constraint firstAttribute="height" constant="128" id="J40-7I-med"/>
                                         </constraints>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2xQ-Ae-B30">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2xQ-Ae-B30">
                                         <rect key="frame" x="0.0" y="162" width="45" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
@@ -230,6 +229,12 @@
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Kz4-Dj-VDp" firstAttribute="centerX" secondItem="k31-SV-4z9" secondAttribute="centerX" id="Q9o-D3-SUh"/>
+                            <constraint firstItem="Kz4-Dj-VDp" firstAttribute="top" secondItem="XaL-WI-Z2F" secondAttribute="top" constant="63" id="RJt-KO-I4W"/>
+                            <constraint firstItem="XaL-WI-Z2F" firstAttribute="bottom" secondItem="Kz4-Dj-VDp" secondAttribute="bottom" constant="283" id="YRG-KB-DfG"/>
+                            <constraint firstItem="Kz4-Dj-VDp" firstAttribute="leading" secondItem="XaL-WI-Z2F" secondAttribute="leading" constant="67" id="eZ6-qZ-2px"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="XaL-WI-Z2F"/>
                     </view>
                     <navigationItem key="navigationItem" title="Detail" id="rdn-f0-Hng">
@@ -239,7 +244,7 @@
                                     <action selector="shareButtonPressed:" destination="lRb-kF-9ZR" id="WFw-KR-Y8o"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem title="Favorite" style="plain" id="rVj-TJ-6oG">
+                            <barButtonItem title="Favorite" image="star-w" style="plain" id="rVj-TJ-6oG">
                                 <connections>
                                     <action selector="favoriteButtonPressed:" destination="lRb-kF-9ZR" id="Z3f-yE-Ygl"/>
                                 </connections>
@@ -249,6 +254,7 @@
                     <connections>
                         <outlet property="AddressButtonText" destination="AeD-W0-dil" id="hWR-j8-Qj6"/>
                         <outlet property="detailImage" destination="9fW-K0-i1M" id="9Re-3L-tXw"/>
+                        <outlet property="favoriteBtn" destination="rVj-TJ-6oG" id="01j-n1-aOW"/>
                         <outlet property="nameLabel" destination="2xQ-Ae-B30" id="Ny1-z5-Hny"/>
                         <outlet property="ratingLabel" destination="pnv-SB-vj1" id="HRh-mf-yE5"/>
                         <segue destination="yeX-qX-iMn" kind="show" identifier="favoriteSegue" id="9hB-Ai-mrq"/>
@@ -277,7 +283,11 @@
             <point key="canvasLocation" x="344.80000000000001" y="-671.51424287856082"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="star-w" width="37.5" height="37.5"/>
+    </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="1in-sM-b9c"/>
         <segue reference="9hB-Ai-mrq"/>
     </inferredMetricsTieBreakers>
 </document>

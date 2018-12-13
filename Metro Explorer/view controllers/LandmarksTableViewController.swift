@@ -18,9 +18,19 @@ class LandmarksTableViewController: UITableViewController {
     let persistenceManager = PersistenceManager()
     var flag: String = ""
     var metroStation: MetroStation?
+    var metroStations = [MetroStation](){
+        didSet{
+            tableView.reloadData()
+        }
+    }
     var currentLocation = CLLocation()
     var landmarks = [Landmark]() {
         didSet {
+            tableView.reloadData()
+        }
+    }
+    var distances = [Double](){
+        didSet{
             tableView.reloadData()
         }
     }
@@ -28,12 +38,20 @@ class LandmarksTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         locationManager.requestWhenInUseAuthorization()
+        fetchMetroStationsManager.delegate = self
         fetchLandmarksManager.delegate = self
-        MBProgressHUD.showAdded(to: self.view, animated: true)
+        locationDetector.delegate = self
+        
         if flag == "LM"{
+            MBProgressHUD.showAdded(to: self.view, animated: true)
+            fetchMetroStationsManager.fetchStations()
+            
+        } else if flag == "S"{
+            MBProgressHUD.showAdded(to: self.view, animated: true)
             fetchLandmarksManager.fetchLandmarks(latitude: metroStation!.latitude, longitude: metroStation!.longitude)
-        } else{
-            MBProgressHUD.hide(for: self.view, animated: true)
+        }
+        else {
+            
             landmarks = PersistenceManager.sharedInstance.fetchLandmarks()
         }
     }
@@ -79,7 +97,23 @@ class LandmarksTableViewController: UITableViewController {
 //get latitude and longitude of the landmark
 extension LandmarksTableViewController: LocationDetectorDelegate {
     func locationDetected(latitude: Double, longitude: Double) {
-        fetchLandmarksManager.fetchLandmarks(latitude: latitude, longitude: longitude)
+        //fetchLandmarksManager.fetchLandmarks(latitude: latitude, longitude: longitude)
+        print("location found")
+        self.currentLocation = CLLocation(latitude: latitude, longitude: longitude)
+        
+        for station in metroStations {
+            let stationLocation = CLLocation(latitude: station.latitude, longitude: station.longitude)
+            let distance = currentLocation.distance(from: stationLocation)
+            distances.append(distance)
+        }
+        
+        if let min = distances.min(){
+            let index = distances.firstIndex(of: min)
+            metroStation = metroStations[index!]
+            fetchLandmarksManager.fetchLandmarks(latitude: metroStation!.latitude, longitude: metroStation!.longitude)
+        }
+        
+        
     }
     
     func locationNotDetected() {
@@ -129,20 +163,15 @@ extension LandmarksTableViewController: FetchLandmarksDelegate{
 //caculate the nearest station to show its landmarks
 extension LandmarksTableViewController: FetchStationsDelegate{
     func stationsFound(_ metroStations: [MetroStation]){
-        print("lankmarks found")
-
-        //       currentLocation(locationDetector.findLocation().)
+        print("stations found")
         DispatchQueue.main.async {
-            var distances: [Double]
-            for metroStation in metroStations {
-           // let distance = currentLocation.distance(from: metroStation)
-            }
-            
+            self.metroStations = metroStations
         }
+            locationDetector.findLocation()
         
     }
     func stationsNotFound(reason: FetchMetroStationsManager.FailureReason){
-        print("lankmarks not found")
+        print("stations not found")
         DispatchQueue.main.async {
             
         }

@@ -59,46 +59,27 @@ class FetchLandmarksManager {
                 return
             }
             
-            //HERE - data is NOT nil
+            //data is NOT nil
             let decoder = JSONDecoder()
             
             do {
-                //let metroStationResponse = try decoder.decode(MetroStationResponse.self, from: data)
+                
                 let landmarkResponse = try decoder.decode(LandmarkResponse.self, from: data)
                 
-                //HERE - decoding was successful
-                
-                //var stations = [MetroStation]()
+                //decoding was successful
                 var landmarks = [Landmark]()
-                
                 for landmark in landmarkResponse.businesses {
-                    //                    let address = venue.location.formattedAddress.joined(separator: " ")
-                    //
-                    //                    let iconPrefix = venue.categories.first?.icon.prefix
-                    //                    let iconSuffix = venue.categories.first?.icon.suffix
-                    //
-                    //                    var iconUrl: String? = nil
-                    //
-                    //                    if let iconPrefix = iconPrefix, let iconSuffix = iconSuffix {
-                    //                        iconUrl = "\(iconPrefix)44\(iconSuffix)"
-                    //                    }
                     
-
-//                    let landmark = Landmark(name: landmark.Name)
-//                    landmark.append(landmark)
-//                     let landmark = Landmark(name: landmark.name, location: landmark.location,latitude: landmark.coordinates.latitude, longitude: landmark.coordinates.longitude, imageUrl: landmark.imageUrl)
                     let landmark = Landmark(name: landmark.name, location: landmark.location,latitude: landmark.coordinates.latitude, longitude: landmark.coordinates.longitude, rating: landmark.rating, id: landmark.id, imageUrl: landmark.imageUrl)
                     
                     landmarks.append(landmark)
                     
                 }
                 
-//                self.delegate?.landmarksFound(stations)
                 self.delegate?.landmarksFound(landmarks)
                 
                 
             } catch let error {
-                //if we get here, need to set a breakpoint and inspect the error to see where there is a mismatch between JSON and our Codable model structs
                 print("codable failed - bad data format")
                 print(error.localizedDescription)
                 self.delegate?.landmarksNotFound(reason: .badData)
