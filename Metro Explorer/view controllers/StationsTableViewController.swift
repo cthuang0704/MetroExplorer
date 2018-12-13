@@ -23,15 +23,9 @@ class StationsTableViewController: UITableViewController {
         fetchMetroStationsManager.delegate = self
         MBProgressHUD.showAdded(to: self.view, animated: true)
         fetchMetroStationsManager.fetchStations()
-//        fetchStations()
     
-    }
-    
-    private func fetchStations() {
- //       MBProgressHUD.showAdded(to: self.view, animated: true)
     }
 
-    
     //return the number of sections
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -57,7 +51,8 @@ class StationsTableViewController: UITableViewController {
             let vc = segue.destination as! LandmarksTableViewController
             let row  = sender as! Int
             vc.metroStation = stations[row]
-            vc.flag = "LM"
+            let vcFlag = segue.destination as! LandmarksTableViewController
+            vcFlag.flag = "S"
         }
     }
     
@@ -81,7 +76,7 @@ extension StationsTableViewController: FetchStationsDelegate {
             switch(reason) {
             case .noResponse:
                 let retryAction = UIAlertAction(title: "Retry", style: .default, handler: { (action) in
-                    self.fetchStations()
+                    self.fetchMetroStationsManager.fetchStations()
                 })
                 
                 let cancelAction = UIAlertAction(title: "Cancel", style: .default, handler:nil)

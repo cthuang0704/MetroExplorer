@@ -56,11 +56,6 @@ class LandmarksTableViewController: UITableViewController {
         }
     }
     
-    private func fetchLandmarks() {
-        //MBProgressHUD.showAdded(to: self.view, animated: true)
-        //locationDetector.findLocation()
-    }
-
     //Table view data source
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -142,7 +137,6 @@ extension LandmarksTableViewController: FetchLandmarksDelegate{
             switch(reason) {
             case .noResponse:
                 let retryAction = UIAlertAction(title: "Retry", style: .default, handler: { (action) in
-                    self.fetchLandmarks()
                 })
                 let cancelAction = UIAlertAction(title: "Cancel", style: .default, handler:nil)
                 

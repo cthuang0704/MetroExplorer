@@ -41,7 +41,6 @@ class FetchLandmarksManager {
         request.addValue("Bearer 67PGR4LPMI63pQLBIjJnjSvFsFVuEjiNNQKWm8ukX9Cg4RTyON-VPepkJ--WGE9ALAWHrmRDLZ0nbgSsQHFzU87MVSs5cuvtkRUdJcJk3WyfgYrRfP3swrBEUn8NXHYx", forHTTPHeaderField: "Authorization")
         
         let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
-            //PUT CODE HERE TO RUN UPON COMPLETION
             
             guard let response = response as? HTTPURLResponse else {
                 self.delegate?.landmarksNotFound(reason: .noResponse)
@@ -53,7 +52,7 @@ class FetchLandmarksManager {
                 return
             }
             
-            //HERE - response is NOT nil and IS 200
+            //response is NOT nil and IS 200
             guard let data = data else {
                 self.delegate?.landmarksNotFound(reason: .noData)
                 return

@@ -13,11 +13,14 @@ class LandmarkDetailViewController: UIViewController {
     
     var landmark:Landmark?
     var flag: String = ""
+    let favoriteBtnImage = UIImage(named: "star-b")
+    let nonfavoriteBtnImage = UIImage(named: "star-w")
     
     @IBOutlet weak var detailImage: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var ratingLabel: UILabel!
     @IBOutlet weak var AddressButtonText: UIButton!
+    @IBOutlet weak var favoriteBtn: UIBarButtonItem!
     @IBAction func AddressButtonPressed(_ sender: Any) {
         if let link = URL(string: "http://maps.apple.com/?daddr=\(landmark!.latitude),\(landmark!.longitude)&dirflg=r"){
             UIApplication.shared.open(link, options: [:], completionHandler: nil)
@@ -34,10 +37,17 @@ class LandmarkDetailViewController: UIViewController {
         }
         let rating = landmark?.rating ?? 0.0
         nameLabel?.text = landmark?.name
-        ratingLabel?.text = ("Rating: \(rating)")
+        ratingLabel?.text = ("Rating: \(rating) /5.0")
         //change button content to landmark address
         AddressButtonText.setTitle(landmark?.location.displayAddress.joined(separator: ", "), for: UIControl.State.normal)
         MBProgressHUD.hide(for: self.view, animated: true)
+        //set image of favorite button
+        if PersistenceManager.sharedInstance.checkFavorite(landmark: landmark!){
+            favoriteBtn.image = favoriteBtnImage
+        }else{
+            favoriteBtn.image = nonfavoriteBtnImage
+        }
+        
     }
     
 /*    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -56,8 +66,10 @@ class LandmarkDetailViewController: UIViewController {
     @IBAction func favoriteButtonPressed(_ sender: Any) {
         if PersistenceManager.sharedInstance.checkFavorite(landmark: landmark!){
             PersistenceManager.sharedInstance.removeLandmarks(landmark: landmark!)
+            favoriteBtn.image = nonfavoriteBtnImage
         }else{
             PersistenceManager.sharedInstance.saveLandmarks(landmark: landmark!)
+            favoriteBtn.image = favoriteBtnImage
         }
     }
 }

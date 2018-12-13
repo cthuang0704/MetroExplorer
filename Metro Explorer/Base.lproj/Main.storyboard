@@ -218,7 +218,7 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AeD-W0-dil">
+                                    <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AeD-W0-dil">
                                         <rect key="frame" x="0.0" y="271" width="57" height="30"/>
                                         <state key="normal" title="Address"/>
                                         <connections>
@@ -226,14 +226,18 @@
                                         </connections>
                                     </button>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstItem="AeD-W0-dil" firstAttribute="top" secondItem="pnv-SB-vj1" secondAttribute="bottom" constant="34" id="ZHX-9K-b6S"/>
+                                    <constraint firstItem="2xQ-Ae-B30" firstAttribute="top" secondItem="9fW-K0-i1M" secondAttribute="bottom" constant="34" id="pIK-2d-tht"/>
+                                    <constraint firstItem="pnv-SB-vj1" firstAttribute="top" secondItem="2xQ-Ae-B30" secondAttribute="bottom" constant="34" id="xRZ-pN-Vhc"/>
+                                </constraints>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="Kz4-Dj-VDp" firstAttribute="centerX" secondItem="k31-SV-4z9" secondAttribute="centerX" id="Q9o-D3-SUh"/>
-                            <constraint firstItem="Kz4-Dj-VDp" firstAttribute="top" secondItem="XaL-WI-Z2F" secondAttribute="top" constant="63" id="RJt-KO-I4W"/>
-                            <constraint firstItem="XaL-WI-Z2F" firstAttribute="bottom" secondItem="Kz4-Dj-VDp" secondAttribute="bottom" constant="283" id="YRG-KB-DfG"/>
-                            <constraint firstItem="Kz4-Dj-VDp" firstAttribute="leading" secondItem="XaL-WI-Z2F" secondAttribute="leading" constant="67" id="eZ6-qZ-2px"/>
+                            <constraint firstItem="Kz4-Dj-VDp" firstAttribute="top" secondItem="XaL-WI-Z2F" secondAttribute="top" constant="63" id="n4I-PW-Aeu"/>
+                            <constraint firstItem="Kz4-Dj-VDp" firstAttribute="leading" secondItem="XaL-WI-Z2F" secondAttribute="leading" constant="67" id="t6a-PT-W0M"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="XaL-WI-Z2F"/>
                     </view>
@@ -287,7 +291,6 @@
         <image name="star-w" width="37.5" height="37.5"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="1in-sM-b9c"/>
         <segue reference="9hB-Ai-mrq"/>
     </inferredMetricsTieBreakers>
 </document>
